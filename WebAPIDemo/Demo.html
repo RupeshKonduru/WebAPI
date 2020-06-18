@@ -1,0 +1,46 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn').click(function () {
+                $.ajax({
+                    type: 'get',
+                    url: 'api/employees',
+                    dataType: 'json',
+                    headers: {
+                        'Authorization': 'Bearer '
+                            + sessionStorage.getItem("accessToken")
+                    },
+                    success: function (data) {                       
+                        $.each(data, function (index, val) {
+                            var fullName = val.ename;
+                            $('#ulEmployees').append('<li>' + fullName + '</li>');
+                        });
+                    }
+                });
+            });
+
+            $('#btnClear').click(function () {
+                $('#ulEmployees').empty();
+            });
+            $('#btnLogout').click(function () {
+                sessionStorage.removeItem("accessToken");
+                window.location.href = "Login.html";
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <input id="btn" type="button" value="Get All Employees" />
+    <input id="btnClear" type="button" value="Clear" />
+    <input id="btnLogout" type="button" value="LogOut" />
+    <ul id="ulEmployees" />
+</body>
+</html>
