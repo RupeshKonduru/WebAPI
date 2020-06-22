@@ -21,16 +21,7 @@ namespace WebAPIDemo.Controllers
         // GET api/values
         public string Get()
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            RazorpayClient client = new RazorpayClient("rzp_test_IP1jXCe3tlhavd", "iDsyO6vw0UsIHPTZEzWGOicp");
-            Dictionary<string, object> options = new Dictionary<string, object>();
-            options.Add("amount", 1002); // amount in the smallest currency unit
-            options.Add("receipt", "order_rcptid_17671");
-            options.Add("currency", "INR");
-            options.Add("payment_capture", "1");
-            var  payment = client.Payment.Transfer(options);
-            Order order = client.Order.Create(options);
-            return "";
+           return "Values Controller GET";
         }
 
         // GET api/values/5
