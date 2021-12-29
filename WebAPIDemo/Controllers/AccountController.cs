@@ -21,6 +21,7 @@ namespace WebAPIDemo.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
+    //Basic comment
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
